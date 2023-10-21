@@ -1,0 +1,34 @@
+def identify_triangle(x, y, z):
+    def tri_print(tri_type):
+        print("This is an {} triangle".format(tri_type))
+
+    if all([x==y, x==z]):
+        triangle_type = "equilateral"
+
+    elif any([
+        all([x>y, x>z, (x**2)==((z**2)+(y**2))]),
+        all([z>y, z>x, (z**2)==((x**2)+(y**2))]),
+        all([y>z, y>x, (y**2)==((z**2)+(x**2))]),
+        ]):
+        triangle_type = "right"
+
+    elif all([x!=z, z!=y, x!=y]):
+        triangle_type = "scalene"
+
+    elif any([
+        all([x==z, x!=y]),
+        all([x==y, x!=z]),
+        all([z==y, z!=x]),
+    ]):
+        triangle_type = "isosceles"
+    else:
+        triangle_type = "Unknown"
+
+    tri_print(triangle_type)
+    return triangle_type
+
+x= float(input("Length of side 1 = "))
+y= float(input("Length of side 2 = "))
+z= float(input("Length of side 3 = "))
+print()
+identify_triangle(x, y, z)
