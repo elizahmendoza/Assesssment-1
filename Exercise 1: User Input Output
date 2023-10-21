@@ -1,4 +1,5 @@
 greeting= "Hello, user!"
+print(greeting)
 username=input("What is your name? ")
 userage=input("What is your age? ")
 
