@@ -1,0 +1,24 @@
+greeting= "Hello, user!"
+username=input("What is your name? ")
+userage=input("What is your age? ")
+
+def age(userage):
+
+   turn=1+int(userage)
+
+   return turn
+
+
+turn = age(userage)
+
+message= 'It is good to meet you, '
+print(message) 
+print(username)
+name= 'The length of your name is:'
+print(name)
+print(len(username))
+agemessage= 'You will be' 
+print(agemessage)
+print(turn) 
+end= 'in a year' 
+print(end)
