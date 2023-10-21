@@ -1,0 +1,11 @@
+required_number = 'Y'
+
+count = 0
+while True:
+    number = str(input("Enter the letter Y\n"))
+    if number == required_number:
+        print ("Would you like to continue?")
+        count+=1
+    else:
+        print ("You entered Y " + str(count) + " times")
+        break
