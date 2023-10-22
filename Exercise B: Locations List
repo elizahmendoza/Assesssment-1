@@ -1,0 +1,19 @@
+locations =['Dubai','Paris', 'Switzerland', 'London', 'Amsterdam', 'New York']
+
+n = len(locations)
+print("The length of list is: ", n)
+
+print("Sorted List:", sorted(locations))
+ 
+print("\nOriginal list:", locations)
+
+print("Reverse sort :", sorted(locations, reverse=True))
+
+print("\nOriginal list:", locations)
+
+reversed_list = list(reversed(locations))
+print("Reversed list: ", reversed_list)
+
+print("Stored list:", sorted(locations))
+
+print("Reversed list :", sorted(locations, reverse=True))
