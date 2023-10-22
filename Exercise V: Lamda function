@@ -1,0 +1,5 @@
+marks = [("CodeLab I",67),("web Development", 75),("CodeLabII",74),("Smartphone Apps",68),("Games Development",70),("Responsive web",65)]
+sorted_marks = sorted(marks, key=lambda index : index[1])
+reversesorted_marks = sorted(marks, key=lambda index : index[-1], reverse=True)
+print("Low to High:", sorted_marks)
+print("High to Low:", reversesorted_marks)
