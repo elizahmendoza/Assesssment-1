@@ -1,0 +1,9 @@
+seconds_in_day = 86400
+seconds_in_hour = 3600
+seconds_in_minute = 60
+
+seconds = int(input("Enter a number of days: "))
+
+days = seconds_in_day * seconds
+
+print(days)
