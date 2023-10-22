@@ -1,0 +1,3 @@
+languages = ['Titanic', 'Steven Spielberg', 'Martin Scorsese', 'Greta Gerwig', 'Cinderella', 'Hereditary']
+for language in languages:
+    print(language)
