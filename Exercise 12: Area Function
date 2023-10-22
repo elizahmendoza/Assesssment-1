@@ -1,0 +1,14 @@
+side = int(input("Enter the side:"))
+Area = side*side
+print("Area of the square="+str(Area))
+
+PI = 3.14
+r = float(input("Enter the radius of a circle:"))
+area = PI * r * r
+print("Area of a circle = %.2f" %area)
+
+def triangle_area(base, height):
+    return 0.5 * base * height
+base = float(input("Enter the base of the triangle: "))
+height = float(input("Enter the height of the triangle: "))
+print("The area of the triangle is", triangle_area(base, height))
