@@ -1,0 +1,7 @@
+def multiplyList(numbers):
+    result = 1
+    for x in numbers:
+        result = result * x
+    return result
+numbers = [2, 4, 9]
+print(multiplyList(numbers))
