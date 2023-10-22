@@ -1,0 +1,18 @@
+list = [7,2,9,5,4,6,1,8,3,10]
+
+for x in list:
+  print(x)
+
+def high_and_low(numbers):
+    return max(numbers), min(numbers)
+print(high_and_low(list))
+
+print("Ascending:", sorted(list))
+
+print("Descending:", sorted(list, reverse=True))
+
+new_items = [12, 11]
+for item in new_items:
+    list.append(item)
+
+print(list)
