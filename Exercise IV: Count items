@@ -1,0 +1,3 @@
+staff = ["Arshiya", "Usman", "Iftikhar", "Usman","Rafia", "Mary", "Anmol","Zainab","Iftikhar", "Arshiya","Rafia","Jake"]
+count = staff.count('Usman')
+print(f'{count=}')
