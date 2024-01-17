@@ -1,0 +1,55 @@
+import json
+
+# Function to get user input for student details
+def get_student_details():
+    name = input("Enter student name: ")
+    student_id = input("Enter student ID: ")
+    course = input("Enter student course: ")
+    return {"Name": name, "ID": student_id, "course": course}
+
+# Function to read and display individual values from JSON file
+def read_and_display_details(file_path):
+    with open(file_path, "r") as file:
+        student_details = json.load(file)
+        print("Details of the Student are")
+        print(f"\tName: {student_details['Name']}")
+        print(f"\tID: {student_details['ID']}")
+        print(f"\tcourse: {student_details['course']}")
+        if 'CourseDetails' in student_details:
+            print(f"\tGroup: {student_details['CourseDetails']['Group']}")
+            print(f"\tYear: {student_details['CourseDetails']['Year']}")
+
+# Function to append and update the JSON file
+def append_and_update(file_path, new_data):
+    try:
+        with open(file_path, "r") as file:
+            student_details = json.load(file)
+        
+        # Append new data to the existing dictionary
+        student_details.update(new_data)
+        
+        with open(file_path, "w") as file:
+            # Update the JSON file with the modified dictionary
+            json.dump(student_details, file, indent=4)
+            
+    except FileNotFoundError:
+        print("File not found.")
+    except json.JSONDecodeError:
+        print("Error decoding JSON.")
+    except Exception as e:
+        print(f"An error occurred: {e}")
+
+# Get user input and write to JSON file
+user_data = get_student_details()
+with open('StudentJson.json', 'w') as file:
+    json.dump(user_data, file, indent=4)
+
+# Read and display individual values from JSON file
+read_and_display_details('StudentJson.json')
+
+# Append and update JSON file with CourseDetails
+new_data = {"CourseDetails": {"Group": "A", "Year": 2}}
+append_and_update('StudentJson.json', new_data)
+
+# Read and display individual values from updated JSON file
+read_and_display_details('StudentJson.json')
