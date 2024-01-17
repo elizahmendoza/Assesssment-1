@@ -1,0 +1,48 @@
+import operator
+
+# Define the operator functions
+operations = {
+    1: operator.add,
+    2: operator.sub,
+    3: operator.mul,
+    4: operator.truediv,
+    5: operator.mod,
+    6: max  # Custom operation to check the greater number
+}
+
+while True:
+    print("Calculator Menu:")
+    print("1. Add")
+    print("2. Subtract")
+    print("3. Multiply")
+    print("4. Divide")
+    print("5. Modulus")
+    print("6. Check greater number")
+    print("Enter 'Q' to quit")
+
+    user_choice = input("Select an operation (1-6) or 'Q' to quit: ").strip().lower()
+
+    if user_choice == 'q':
+        break
+    elif not user_choice.isdigit():
+        print("Invalid input. Please enter a number (1-6) or 'Q' to quit.")
+        continue
+
+    operation_choice = int(user_choice)
+    
+    if operation_choice not in operations:
+        print("Invalid choice. Please select a valid operation (1-6) or 'Q' to quit.")
+        continue
+
+    try:
+        value1 = float(input("Enter the first number: "))
+        value2 = float(input("Enter the second number: "))
+    except ValueError:
+        print("Invalid input. Please enter numeric values.")
+        continue
+
+    if operation_choice == 4 and value2 == 0:
+        print("Error: Division by zero.")
+    else:
+        result = operations[operation_choice](value1, value2)
+        print(f"Result: {result}")
