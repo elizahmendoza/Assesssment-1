@@ -5,6 +5,7 @@ for x in list:
 
 def high_and_low(numbers):
     return max(numbers), min(numbers)
+print("Highest and Lowest number:")
 print(high_and_low(list))
 
 print("Ascending:", sorted(list))
@@ -15,4 +16,4 @@ new_items = [12, 11]
 for item in new_items:
     list.append(item)
 
-print(list)
+print("List after appending:", (list))
