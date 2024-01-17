@@ -1,0 +1,98 @@
+from tkinter import *
+
+class Animal:
+    def __init__(self, type, name, colour, age, weight, noise):
+        self.type = type
+        self.name = name
+        self.colour = colour
+        self.age = age
+        self.weight = weight
+        self.noise = noise
+
+    def sayHello(self):
+        return f"'{self.name}' says hello!"
+
+    def makeNoise(self):
+        return f"'{self.name}' makes the noise '{self.noise}'!"
+
+    def animalDetails(self):
+        details = f"Type: {self.type}\nName: {self.name}\nColour: {self.colour}\nAge: {self.age}\nWeight: {self.weight}\nNoise: {self.noise}"
+        return details
+
+    def animalExample(self):
+        dog = Animal("Dog", "Bomber", "Brown", "3", "10 kg", "Woof!")
+        bird = Animal("Bird", "Rio", "Blue", "2", "0.31 kg", "Chirp!")
+        return f"Example 1:\n{dog.animalDetails()}\n\nExample 2:\n{bird.animalDetails()}"
+
+
+def newAnimal():
+    type = enterType.get()
+    name = enterName.get()
+    colour = enterColour.get()
+    age = enterAge.get()
+    weight = enterWeight.get()
+    noise = enterNoise.get()
+
+    new_animal = Animal(type, name, colour, age, weight, noise)
+    animals.append(new_animal)
+
+    helloMsg.set(new_animal.sayHello())
+    outputMsg.set(new_animal.animalDetails())
+    noiseMsg.set(new_animal.makeNoise())
+
+    exampleLabel.config(text="")
+    root.update_idletasks()
+
+
+root = Tk()
+root.geometry("300x550")
+root.resizable(False, False)
+root.title("Animal Details")
+
+header = Label(root, text="Animals", font=(None, 14))
+header.grid(row=0, column=0, columnspan=2, pady=20)
+
+Label(root, text="Type:").grid(row=1, column=0)
+Label(root, text="Name:").grid(row=2, column=0)
+Label(root, text="Colour:").grid(row=3, column=0)
+Label(root, text="Age:").grid(row=4, column=0)
+Label(root, text="Weight (in kg):").grid(row=5, column=0)
+Label(root, text="Noise:").grid(row=6, column=0)
+
+enterType = Entry(root)
+enterName = Entry(root)
+enterColour = Entry(root)
+enterAge = Entry(root)
+enterWeight = Entry(root)
+enterNoise = Entry(root)
+
+enterType.grid(row=1, column=1)
+enterName.grid(row=2, column=1)
+enterColour.grid(row=3, column=1)
+enterAge.grid(row=4, column=1)
+enterWeight.grid(row=5, column=1)
+enterNoise.grid(row=6, column=1)
+
+Button(root, text="Create Animal", command=newAnimal).grid(row=7, column=0, columnspan=2, pady=30)
+
+exampleLabel = Label(root, text=Animal("", "", "", "", "", "").animalExample(), justify=LEFT)
+exampleLabel.grid(row=8, column=0, columnspan=2)
+
+helloMsg = StringVar()
+helloLabel = Label(root, textvariable=helloMsg, justify=LEFT)
+helloLabel.grid(row=9, column=0, columnspan=2)
+
+outputMsg = StringVar()
+outputLabel = Label(root, textvariable=outputMsg, justify=LEFT)
+outputLabel.grid(row=10, column=0, columnspan=2)
+
+noiseMsg = StringVar()
+noiseLabel = Label(root, textvariable=noiseMsg, justify=LEFT)
+noiseLabel.grid(row=11, column=0, columnspan=2)
+
+for i in range(2):
+    root.columnconfigure(i, weight=1)
+
+animals = []
+
+root.mainloop()
