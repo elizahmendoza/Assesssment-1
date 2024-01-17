@@ -1,0 +1,28 @@
+import tkinter as tk
+
+# Create the main window
+root = tk.Tk()
+root.geometry("300x300")
+root.title("Labels in Frames")
+
+# Create left and right frames
+left_frame = tk.Frame(root, borderwidth=5, relief="solid")
+right_frame = tk.Frame(root, borderwidth=5, relief="solid")
+
+left_frame.pack(side="left", expand=True, fill="both")
+right_frame.pack(side="right", expand=True, fill="both")
+
+# Create labels A, B, C, and D
+label_a = tk.Label(left_frame, text="A", bg="lightpink")
+label_b = tk.Label(left_frame, text="B", bg="lightgreen")
+label_c = tk.Label(right_frame, text="C", bg="lightblue")
+label_d = tk.Label(right_frame, text="D", bg="lavender")
+
+# Align labels A and C at the top, and labels B and D at the bottom
+label_a.pack(side="top", expand=True, fill="both")
+label_b.pack(side="bottom", expand=True, fill="both")
+label_c.pack(side="top", expand=True, fill="both")
+label_d.pack(side="bottom", expand=True, fill="both")
+
+# Start the Tkinter main loop
+root.mainloop()
