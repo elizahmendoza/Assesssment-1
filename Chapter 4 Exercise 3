@@ -1,0 +1,21 @@
+# Open the file for reading
+with open("numbers.txt", "r") as file:
+    # Read the file and split it into lines
+    lines = file.readlines()
+
+# Initialize an empty list to store the integers
+integer_list = []
+
+# Iterate through the lines and convert them to integers
+for line in lines:
+    try:
+        # Convert the line to an integer and append it to the list
+        num = int(line.strip())
+        integer_list.append(num)
+    except ValueError:
+        # Handle non-integer lines (if any)
+        print(f"Skipping non-integer line: {line.strip()}")
+
+# Output the list of integers
+for num in integer_list:
+    print(num)
