@@ -1,0 +1,62 @@
+import tkinter as tk
+
+class Students:
+    def __init__(self, name, mark1, mark2, mark3):
+        self.name = name
+        self.mark1 = mark1
+        self.mark2 = mark2
+        self.mark3 = mark3
+
+    def calcGrade(self):
+        return (self.mark1 + self.mark2 + self.mark3) / 3
+
+    def display(self):
+        average = self.calcGrade()
+        return f"Name: {self.name}\nAverage Grade: {average}"
+
+# Function to create a Students object using input from the user
+def create_student():
+    name = name_entry.get()
+    mark1 = int(mark1_entry.get())
+    mark2 = int(mark2_entry.get())
+    mark3 = int(mark3_entry.get())
+
+    student = Students(name, mark1, mark2, mark3)
+
+    student_info_label.config(text=student.display())
+
+# Create the main application window
+app = tk.Tk()
+app.title("Student Information")
+
+# Create labels and entry widgets for student information
+name_label = tk.Label(app, text="Name:")
+name_label.pack()
+name_entry = tk.Entry(app)
+name_entry.pack()
+
+mark1_label = tk.Label(app, text="Mark 1:")
+mark1_label.pack()
+mark1_entry = tk.Entry(app)
+mark1_entry.pack()
+
+mark2_label = tk.Label(app, text="Mark 2:")
+mark2_label.pack()
+mark2_entry = tk.Entry(app)
+mark2_entry.pack()
+
+mark3_label = tk.Label(app, text="Mark 3:")
+mark3_label.pack()
+mark3_entry = tk.Entry(app)
+mark3_entry.pack()
+
+# Create a button to create the student object and display information
+create_button = tk.Button(app, text="Create Student", command=create_student)
+create_button.pack()
+
+# Create a label to display student information
+student_info_label = tk.Label(app, text="")
+student_info_label.pack()
+
+# Start the main loop
+app.mainloop()
