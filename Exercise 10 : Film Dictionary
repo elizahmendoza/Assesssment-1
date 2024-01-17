@@ -1,3 +1,3 @@
-languages = ['Titanic', 'Steven Spielberg', 'Martin Scorsese', 'Greta Gerwig', 'Cinderella', 'Hereditary']
-for language in languages:
-    print(language)
+filmdetails = { "Title": "Barbie", "Director": "Greta Gerwig", "Year": "2023", "Genre": "Adventure, Fantasy, Comedy", "Rating": "83%" }
+for key, value in filmdetails.items():
+    print(f"{key}: {value}")
