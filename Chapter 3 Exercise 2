@@ -1,0 +1,71 @@
+import tkinter as tk
+from tkinter import ttk
+from tkinter import messagebox
+from PIL import Image, ImageTk
+
+# Function to display the selected options and a message
+def dispense_coffee():
+    coffee_type = coffee_var.get()
+    sugar = sugar_var.get()
+    milk = milk_var.get()
+
+    message = f"Enjoy your {coffee_type} coffee"
+    if sugar:
+        message += " with sugar"
+    if milk:
+        message += " and milk"
+
+    messagebox.showinfo("Coffee Dispenser", message)
+
+# Create the main window
+root = tk.Tk()
+root.title("Coffee Vending Machine")
+
+# Coffee options
+coffee_var = tk.StringVar()
+coffee_var.set("Espresso")  # Default selection
+coffee_label = ttk.Label(root, text="Select Coffee:")
+coffee_menu = ttk.Combobox(root, textvariable=coffee_var, values=["Espresso", "Cappuccino", "Latte", "Mocha"])
+
+# Sugar option
+sugar_var = tk.BooleanVar()
+sugar_check = ttk.Checkbutton(root, text="Add Sugar", variable=sugar_var)
+
+# Milk option
+milk_var = tk.BooleanVar()
+milk_check = ttk.Checkbutton(root, text="Add Milk", variable=milk_var)
+
+# Coffee images
+coffee_images = {
+    "Espresso": "Group 13.png"
+}
+
+# Display the coffee image
+def display_coffee_image():
+    selected_coffee = coffee_var.get()
+    image_path = coffee_images.get(selected_coffee, "default.png")
+    img = Image.open(image_path)
+    img = img.resize((200, 200))
+    photo = ImageTk.PhotoImage(img)
+    image_label.configure(image=photo)
+    image_label.image = photo
+
+# Button to dispense coffee
+dispense_button = ttk.Button(root, text="Dispense Coffee", command=dispense_coffee)
+
+# Image label
+image_label = ttk.Label(root, image=None)
+
+# Layout and positioning of widgets
+coffee_label.grid(row=0, column=0, padx=10, pady=10)
+coffee_menu.grid(row=0, column=1, padx=10, pady=10)
+sugar_check.grid(row=1, column=0, padx=10, pady=10)
+milk_check.grid(row=1, column=1, padx=10, pady=10)
+image_label.grid(row=2, column=0, columnspan=2)
+dispense_button.grid(row=3, column=0, columnspan=2, padx=10, pady=10)
+
+# Display the initial coffee image
+display_coffee_image()
+
+# Start the Tkinter main loop
+root.mainloop()
