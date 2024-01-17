@@ -1,0 +1,36 @@
+import tkinter as tk
+
+def count_occurrences():
+    # Get the character entered by the user
+    char_to_count = char_entry.get()
+
+    # Open and read the 'sentences.txt' file
+    with open('sentences.txt', 'r') as file:
+        text = file.read()
+
+    # Count the occurrences of the character
+    char_count = text.count(char_to_count)
+
+    # Display the result in a label
+    result_label.config(text=f"Occurrences of '{char_to_count}': {char_count}")
+
+# Create the main application window
+app = tk.Tk()
+app.title("Character Occurrence Counter")
+
+# Create a label and entry for user input
+char_label = tk.Label(app, text="Enter a character:")
+char_label.pack()
+char_entry = tk.Entry(app)
+char_entry.pack()
+
+# Create a button to trigger the counting process
+count_button = tk.Button(app, text="Count Occurrences", command=count_occurrences)
+count_button.pack()
+
+# Create a label to display the result
+result_label = tk.Label(app, text="")
+result_label.pack()
+
+# Start the main loop
+app.mainloop()
