@@ -1,0 +1,82 @@
+import tkinter as tk
+
+class Employee:
+    def __init__(self):
+        self.name = ""
+        self.position = ""
+        self.salary = 0.0
+        self.id = 0
+
+    def setData(self, name, position, salary, emp_id):
+        self.name = name
+        self.position = position
+        self.salary = salary
+        self.id = emp_id
+
+    def getData(self):
+        return f"{self.name}\t{self.position}\t{self.salary}\t{self.id}"
+
+# Function to create an employee and add it to the list
+def add_employee():
+    name = name_entry.get()
+    position = position_entry.get()
+    salary = float(salary_entry.get())
+    emp_id = len(employees) + 1
+
+    employee = Employee()
+    employee.setData(name, position, salary, emp_id)
+    employees.append(employee)
+
+    name_entry.delete(0, "end")
+    position_entry.delete(0, "end")
+    salary_entry.delete(0, "end")
+
+    if len(employees) == 5:
+        add_button.config(state="disabled")
+
+# Function to display employee data
+def display_employees():
+    result_text.config(state="normal")
+    result_text.delete(1.0, "end")
+    result_text.insert("end", "Name\tPosition\tSalary\tID\n")
+    for employee in employees:
+        result_text.insert("end", employee.getData() + "\n")
+    result_text.config(state="disabled")
+
+# Create the main application window
+app = tk.Tk()
+app.title("Employee Information")
+
+# Create labels and entry widgets for employee information
+name_label = tk.Label(app, text="Name:")
+name_label.pack()
+name_entry = tk.Entry(app)
+name_entry.pack()
+
+position_label = tk.Label(app, text="Position:")
+position_label.pack()
+position_entry = tk.Entry(app)
+position_entry.pack()
+
+salary_label = tk.Label(app, text="Salary:")
+salary_label.pack()
+salary_entry = tk.Entry(app)
+salary_entry.pack()
+
+# Create a button to add employees
+add_button = tk.Button(app, text="Add Employee", command=add_employee)
+add_button.pack()
+
+# Create a button to display employees
+display_button = tk.Button(app, text="Display Employees", command=display_employees)
+display_button.pack()
+
+# Create a text widget to display employee data
+result_text = tk.Text(app, state="disabled", height=10, width=40)
+result_text.pack()
+
+# Create a list to store employees
+employees = []
+
+# Start the main loop
+app.mainloop()
